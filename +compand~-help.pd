@@ -1,0 +1,198 @@
+#N canvas 192 91 950 547 12;
+#X obj -190 111 cnv 15 700 400 empty empty empty 20 12 0 14 -204786
+-66577 0;
+#X floatatom 216 423 5 0 60 0 - - -;
+#X obj 216 462 s comp;
+#X floatatom 11 422 5 1 100 0 - - -;
+#X obj 11 461 s comp;
+#X floatatom 108 423 5 100 2000 0 - - -;
+#X obj 108 462 s comp;
+#X floatatom -120 422 5 0 1 0 - - -;
+#X obj -120 462 s comp;
+#X msg 11 440 attack \$1;
+#X msg 108 441 release \$1;
+#X obj 270 356 s comp;
+#X obj 270 315 tgl 15 0 empty comp_rms empty 17 7 0 10 -262144 -1 -1
+1 1;
+#X msg -120 441 softKnee \$1;
+#X msg 216 441 makeupGain \$1;
+#X msg 270 335 rmsDetect \$1;
+#X obj -120 290 vsl 15 128 0 1 0 0 empty comp_knee empty 0 -9 0 10
+-262130 -1 -1 0 1;
+#X obj 11 290 vsl 15 128 1 100 1 0 empty comp_att empty 0 -9 0 10 -262130
+-1 -1 8262 1;
+#X obj 216 291 vsl 15 128 0 60 0 0 empty comp_mgain empty 0 -9 0 10
+-262130 -1 -1 0 1;
+#X obj 108 291 vsl 15 128 100 2000 1 0 empty comp_rel empty 0 -9 0
+10 -262130 -1 -1 6823 1;
+#X text -184 11 +compand~;
+#X obj 557 156 bng 15 250 50 0 comp_openfile empty open-sound-file
+17 7 0 12 -4034 -262144 -1;
+#X obj 387 291 vsl 15 128 0 100 0 0 empty comp_vol empty 0 -9 0 10
+-262130 -1 -1 10795 1;
+#X text 319 264 Master Volume (dB);
+#X floatatom 387 427 5 0 100 0 - - comp_volume;
+#N canvas 551 126 513 527 control 0;
+#X text 4 321 RMSdetect deterimes whether a peak or an averaged value
+(RMS) of the input is used to determine whether or not the level has
+exceeded the threshold. (clicking the box turns on rms detection) RMS
+provides a smoother sounding compression.;
+#X text 2 468 Make up gain simply provides extra gain to compensate
+for the attenuation due to attenuating the input signal.;
+#X text 6 64 Ratio ranges from 10 to 0.1. It determines how much the
+input level will be compressed/expanded when it has exceeded the threshold
+value. During compression if the input signal exceeds the threshold
+it is attenuated by this ratio (decreases dynamic range). During expansion
+if the input signal is below a threshold it attenuates it and above
+the threshold it amplfies the input by this ratio (increases dynamic
+range).;
+#X text 3 259 Release ranges between 100ms and 2000ms. It determines
+how quickly the the compression/expansion is reduced after the input
+level falls below the threshold.;
+#X text 4 203 Attack ranges between 1.0ms and 100.0ms. It determines
+how quickly the output is reduced/increased by the set ratio and threshold
+level.;
+#X text 4 410 Soft Knee controls how quickly the compression/expansion
+ratio is increased to the set value. Raising this control allows the
+ratio to change gradually.;
+#X text 5 2 Threshold ranges from -60dB to 0dB. It determines when
+the input level has reached a the point where compression/expansion
+will be performed.;
+#X restore 344 39 pd control details;
+#X text -6 263 Attack;
+#X text 86 264 Release;
+#X text 179 262 Makeup Gain;
+#X text -135 264 Soft Knee;
+#X obj -158 181 hsl 128 15 0.1 10 1 0 empty comp_initratio empty -2
+-8 0 10 -262130 -1 -1 6350 1;
+#X obj 224 181 hsl 128 15 -60 0 0 0 empty comp_initthresh empty -2
+-8 0 10 -262130 -1 -1 4233 1;
+#X text 219 162 Threshold between -60 dB and 0 dB.;
+#X text 34 396 (ms);
+#X text 130 397 (ms);
+#X text 241 395 (dB);
+#X floatatom -161 197 5 0.1 10 0 - - comp_ratio;
+#X floatatom 221 197 5 0 0 0 - - comp_thresh;
+#X text -163 132 Ratio between 0.1 and 10 \; below 1 compresses \,
+above 1 expands \; (logarithmic slider control);
+#X obj -190 30 cnv 15 500 60 empty empty empty 20 12 0 14 -204786 -66577
+0;
+#X text -182 40 A combined compressor/expander patch. It has a softknee
+control as well as a switchable rms/peak level detector.;
+#X obj 557 341 +compand~;
+#X obj 581 240 r comp;
+#X obj 607 274 r comp_ratio;
+#X obj 632 308 r comp_thresh;
+#N canvas 542 210 456 455 init 0;
+#X msg 29 325 1;
+#X msg 73 262 0;
+#X obj 73 316 s comp_knee;
+#X obj 124 255 s comp_vol;
+#X msg 124 230 85;
+#X msg 215 165 -40;
+#X msg 262 134 20;
+#X msg 311 104 500;
+#X obj 262 159 s comp_att;
+#X obj 311 129 s comp_rel;
+#X obj 73 293 s comp_mgain;
+#X msg 169 193 1;
+#X obj 168 223 s comp_rms;
+#X obj 29 352 s comp_initratio;
+#X obj 215 188 s comp_initthresh;
+#X msg 10 385 \; pd dsp 1;
+#X obj 10 21 loadbang;
+#X obj 10 44 t b b b b b b b b;
+#X connect 0 0 13 0;
+#X connect 1 0 2 0;
+#X connect 1 0 10 0;
+#X connect 4 0 3 0;
+#X connect 5 0 14 0;
+#X connect 6 0 8 0;
+#X connect 7 0 9 0;
+#X connect 11 0 12 0;
+#X connect 16 0 17 0;
+#X connect 17 0 15 0;
+#X connect 17 1 0 0;
+#X connect 17 2 1 0;
+#X connect 17 3 4 0;
+#X connect 17 4 11 0;
+#X connect 17 5 5 0;
+#X connect 17 6 6 0;
+#X connect 17 7 7 0;
+#X restore 432 62 pd init;
+#N canvas 331 191 231 316 output 0;
+#X obj 52 226 dac~;
+#X obj 51 183 *~;
+#X obj 72 109 dbtorms;
+#X obj 72 84 r comp_volume;
+#X msg 72 132 \$1 50;
+#X obj 72 155 line~;
+#X obj 51 40 inlet~;
+#X connect 1 0 0 0;
+#X connect 1 0 0 1;
+#X connect 2 0 4 0;
+#X connect 3 0 2 0;
+#X connect 4 0 5 0;
+#X connect 5 0 1 1;
+#X connect 6 0 1 0;
+#X restore 557 394 pd output;
+#N canvas 81 45 673 446 sf-player 0;
+#N canvas 0 22 450 300 (subpatch) 0;
+#X array comp_soundfile 188893 float 2;
+#X coords 0 1 188893 -1 200 140 1;
+#X restore 439 27 graph;
+#X obj 439 290 /;
+#X obj 439 238 t b f;
+#X obj 439 265 samplerate~;
+#X obj 439 212 r comp_filelength;
+#X obj 439 315 s comp_phasorfreq;
+#X obj 24 35 openpanel;
+#X obj 24 94 soundfiler;
+#X obj 22 180 phasor~ 0.5;
+#X obj 22 207 *~;
+#X obj 64 205 r comp_filelength;
+#X obj 22 231 tabread4~ comp_soundfile;
+#X msg 24 63 read -resize -maxsize 2e+06 \$1 comp_soundfile;
+#X obj 24 124 s comp_filelength;
+#X obj 22 150 r comp_phasorfreq;
+#X obj 24 8 r comp_openfile;
+#X text 115 86 File length under must be under 1 min. \; Change if
+needed.;
+#X obj 22 254 outlet~;
+#X connect 1 0 5 0;
+#X connect 2 0 3 0;
+#X connect 2 1 1 1;
+#X connect 3 0 1 0;
+#X connect 4 0 2 0;
+#X connect 6 0 12 0;
+#X connect 7 0 13 0;
+#X connect 8 0 9 0;
+#X connect 9 0 11 0;
+#X connect 10 0 9 1;
+#X connect 11 0 17 0;
+#X connect 12 0 7 0;
+#X connect 14 0 8 0;
+#X connect 15 0 6 0;
+#X restore 557 177 pd sf-player;
+#X connect 1 0 14 0;
+#X connect 3 0 9 0;
+#X connect 5 0 10 0;
+#X connect 7 0 13 0;
+#X connect 9 0 4 0;
+#X connect 10 0 6 0;
+#X connect 12 0 15 0;
+#X connect 13 0 8 0;
+#X connect 14 0 2 0;
+#X connect 15 0 11 0;
+#X connect 16 0 7 0;
+#X connect 17 0 3 0;
+#X connect 18 0 1 0;
+#X connect 19 0 5 0;
+#X connect 22 0 24 0;
+#X connect 30 0 36 0;
+#X connect 31 0 37 0;
+#X connect 41 0 46 0;
+#X connect 42 0 41 0;
+#X connect 43 0 41 1;
+#X connect 44 0 41 2;
+#X connect 47 0 41 0;

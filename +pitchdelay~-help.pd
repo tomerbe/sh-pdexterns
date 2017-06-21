@@ -1,0 +1,214 @@
+#N canvas 441 116 740 443 12;
+#X floatatom 8 215 5 1 5000 0 - - -;
+#X floatatom 176 343 5 0 200 0 - - -;
+#X floatatom 8 343 5 0 100 0 - - -;
+#X obj 8 254 s pitchdel;
+#X obj 8 382 s pitchdel;
+#X obj 176 382 s pitchdel;
+#X obj 358 392 s pitchdel;
+#X msg 8 233 time \$1;
+#X msg 176 361 feedback \$1;
+#X msg 358 371 octave \$1;
+#X msg 8 361 loopDepth \$1;
+#X obj 176 278 s pitchdel;
+#X msg 176 257 pitchFactor \$1;
+#X obj 179 198 hsl 128 15 0 34 0 0 empty pit_pitfact empty -2 -8 0
+10 -228856 -1 -1 0 1;
+#X obj 11 199 hsl 128 15 1 5000 1 0 empty pit_time empty -2 -8 0 10
+-228856 -1 -1 10200 1;
+#X text 6 15 +pitchdelay~;
+#N canvas 114 51 720 539 pitch_soundfile 0;
+#N canvas 0 22 450 300 (subpatch) 0;
+#X array pitch_soundfile 188893 float 2;
+#X coords 0 1 188893 -1 200 140 1;
+#X restore 34 32 graph;
+#X obj 76 352 /;
+#X obj 296 33 openpanel;
+#X obj 296 90 soundfiler;
+#X obj 295 172 phasor~ 0.5;
+#X obj 295 199 *~;
+#X obj 76 288 t b f;
+#X obj 76 321 samplerate~;
+#X obj 295 115 s pitch_filelength;
+#X obj 76 260 r pitch_filelength;
+#X obj 76 377 s pitch_phasorfreq;
+#X obj 337 199 r pitch_filelength;
+#X obj 295 223 tabread4~ pitch_soundfile;
+#X msg 296 58 read -resize -maxsize 2e+06 \$1 pitch_soundfile;
+#X obj 295 147 r pitch_phasorfreq;
+#X obj 296 7 r pitch_openfile;
+#X obj 295 490 dac~;
+#X obj 316 370 dbtorms;
+#X obj 317 343 r pitch_dryvolume;
+#X obj 295 447 *~;
+#X obj 316 416 line~;
+#X msg 316 393 \$1 50;
+#X obj 347 279 outlet~;
+#X connect 1 0 10 0;
+#X connect 2 0 13 0;
+#X connect 3 0 8 0;
+#X connect 4 0 5 0;
+#X connect 5 0 12 0;
+#X connect 6 0 7 0;
+#X connect 6 1 1 1;
+#X connect 7 0 1 0;
+#X connect 9 0 6 0;
+#X connect 11 0 5 1;
+#X connect 12 0 19 0;
+#X connect 12 0 22 0;
+#X connect 13 0 3 0;
+#X connect 14 0 4 0;
+#X connect 15 0 2 0;
+#X connect 17 0 21 0;
+#X connect 18 0 17 0;
+#X connect 19 0 16 0;
+#X connect 19 0 16 1;
+#X connect 20 0 19 1;
+#X connect 21 0 20 0;
+#X restore 556 229 pd pitch_soundfile;
+#X obj 361 198 hsl 128 15 0 100 0 0 empty pit_dryvol empty -2 -8 0
+10 -228856 -1 -1 10000 1;
+#X obj 361 258 hsl 128 15 0 100 0 0 empty pit_delvol empty -2 -8 0
+10 -228856 -1 -1 10095 1;
+#X text 360 179 Dry Volume (dB);
+#X text 361 238 Delay Volume (dB);
+#X floatatom 358 214 5 0 0 0 - - pitch_dryvolume;
+#X floatatom 358 274 5 0 0 0 - - pitch_delvolume;
+#N canvas 154 27 514 538 control 0;
+#X text 15 45 time - the delay time. Since the pitch-shifting effect
+is based on modulating the delay time \, it has a higher fidelity when
+the delay time is higher.;
+#X text 13 259 loop depth - this controls the amount of delay line
+which is used for pitch-shifting.;
+#X text 9 301 Dry/Delay volume-controls the volume of the original
+signal (dry) or the delayed signal (delay);
+#X text 13 139 feedback - the same feedback with saturation from +delay~.
+This allows interesting effects like a circle of fifths delay.;
+#X text 16 104 pitch shift - this knob selects ratios and equal tempered
+;
+#X text 14 198 octave - the control adds or subtracts a number of octaves
+to or from the pitch shift value. It varies from -3 to 3 \, and at
+extremes will give very distorted pitch-shifting.;
+#X text 19 14 +pitchdelay~;
+#X text 6 357 Mix-controls the ratio of dry-delay in the output. Ranges
+from 0 to 100% (0% all dry \, 100% all delay). Adjust mix \, then adjust
+volumes as desired.;
+#X text 7 412 Pitch Factor- This controls by how much the pitch is
+shifted. The controls have equal tempered intervals (minor second major
+second etc) with just intonation ratios in between.;
+#X restore 523 45 pd control details;
+#X obj 179 327 hsl 128 15 0 200 0 0 empty pit_fb empty -2 -8 0 10 -228856
+-1 -1 0 1;
+#X obj 11 327 hsl 128 15 10 100 0 0 empty pit_lpdepth empty -2 -8 0
+10 -228856 -1 -1 12700 1;
+#X text 174 309 0 - 200%;
+#X text 6 181 0 - 5000 ms (log);
+#X obj 176 214 int;
+#X symbolatom 176 177 12 0 0 0 - label -;
+#N canvas 624 151 656 333 label 0;
+#X obj 117 188 list;
+#X obj 117 209 list split 1;
+#X obj 77 83 t b f f b;
+#X obj 117 238 list split 1;
+#X obj 77 63 + 1;
+#X obj 238 220 - 1;
+#X obj 77 35 inlet;
+#X obj 163 264 s label;
+#X msg 146 106 Unison Minor_2nd 16/15 10/9 Major_2nd 9/8 8/7 7/6 Minor_3rd
+6/5 5/4 Major_3rd 9/7 4/3 Perfect_4th 7/5 Tritone 10/7 Perfect_5th
+3/2 14/9 11/7 Minor_6th 8/5 5/3 Major_6th 12/7 7/4 16/9 Minor_7th 9/5
+13/7 15/8 Major_7th Octave;
+#X connect 0 0 1 0;
+#X connect 1 0 3 0;
+#X connect 2 0 0 0;
+#X connect 2 1 1 1;
+#X connect 2 2 5 0;
+#X connect 2 3 8 0;
+#X connect 3 1 7 0;
+#X connect 4 0 2 0;
+#X connect 5 0 3 1;
+#X connect 6 0 4 0;
+#X connect 8 0 0 1;
+#X restore 188 235 pd label;
+#N canvas 351 72 450 447 init 0;
+#X msg 77 302 12.9;
+#X msg 137 209 0;
+#X msg 193 173 25;
+#X obj 77 325 s pit_time;
+#X obj 137 287 s pit_pitfact;
+#X obj 137 256 s pit_fb;
+#X obj 137 234 s pit_oct;
+#X msg 253 118 85;
+#X obj 193 199 s pit_lpdepth;
+#X obj 253 143 s pit_dryvol;
+#X obj 253 167 s pit_delvol;
+#X msg 38 359 \; pd dsp 1 \;;
+#X obj 38 -18 loadbang;
+#X obj 38 5 t b b b b b b;
+#X obj 306 105 s octave-set;
+#X msg 306 82 3;
+#X connect 0 0 3 0;
+#X connect 1 0 4 0;
+#X connect 1 0 5 0;
+#X connect 1 0 6 0;
+#X connect 2 0 8 0;
+#X connect 7 0 9 0;
+#X connect 7 0 10 0;
+#X connect 12 0 13 0;
+#X connect 13 0 11 0;
+#X connect 13 1 0 0;
+#X connect 13 2 1 0;
+#X connect 13 3 2 0;
+#X connect 13 4 7 0;
+#X connect 13 5 15 0;
+#X connect 15 0 14 0;
+#X restore 611 68 pd init;
+#X obj 8 37 cnv 15 500 60 empty empty empty 20 12 0 14 -233017 -66577
+0;
+#N canvas 1043 86 249 335 output 0;
+#X obj 45 242 dac~;
+#X obj 66 120 dbtorms;
+#X obj 67 93 r pitch_delvolume;
+#X obj 45 199 *~;
+#X obj 66 166 line~;
+#X msg 66 143 \$1 50;
+#X obj 45 34 inlet~;
+#X connect 1 0 5 0;
+#X connect 2 0 1 0;
+#X connect 3 0 0 0;
+#X connect 3 0 0 1;
+#X connect 4 0 3 1;
+#X connect 5 0 4 0;
+#X connect 6 0 3 0;
+#X restore 556 343 pd output;
+#X obj 585 264 r pitchdel;
+#X obj 556 311 +pitchdelay~;
+#X obj 556 204 bng 15 250 50 0 pitch_openfile empty open-sound-file
+17 7 0 12 -4034 -1 -1;
+#X text 6 309 10 - 100%;
+#X text 16 48 The +pitchdelay~ object is similar to the +delay~ object
+with an emphasis on pitch-shifting.;
+#X obj 358 327 hradio 15 1 0 7 empty octave-set empty 0 -8 0 10 -262144
+-1 -1 3;
+#X obj 358 347 - 3;
+#X connect 0 0 7 0;
+#X connect 1 0 8 0;
+#X connect 2 0 10 0;
+#X connect 7 0 3 0;
+#X connect 8 0 5 0;
+#X connect 9 0 6 0;
+#X connect 10 0 4 0;
+#X connect 12 0 11 0;
+#X connect 13 0 28 0;
+#X connect 14 0 0 0;
+#X connect 16 0 35 0;
+#X connect 17 0 21 0;
+#X connect 18 0 22 0;
+#X connect 24 0 1 0;
+#X connect 25 0 2 0;
+#X connect 28 0 12 0;
+#X connect 28 0 30 0;
+#X connect 34 0 35 0;
+#X connect 35 0 33 0;
+#X connect 39 0 40 0;
+#X connect 40 0 9 0;

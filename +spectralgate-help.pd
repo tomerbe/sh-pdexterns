@@ -1,0 +1,257 @@
+#N canvas 92 97 816 635 10;
+#N canvas 0 22 450 300 (subpatch) 0;
+#X array sg-array 513 float 1;
+#A 0 -45.6564 -56.69 -76.8366 -89.3703 -95.7929 -91.6033 -96.2698 -97.3817
+-100.195 -103.995 -100.084 -86.9881 -73.481 -83.4919 -108.134 -111.949
+-110.291 -99.5135 -88.5189 -94.3359 -81.4745 -82.7084 -104.683 -106.773
+-116.128 -114.038 -98.689 -84.208 -79.0217 -84.3693 -48.5516 -38.9474
+-58.9881 -98.2993 -99.1101 -93.1964 -88.8741 -80.1792 -70.6 -81.225
+-87.325 -69.0077 -54.4243 -60.8519 -74.2408 -75.7566 -80.1886 -87.9285
+-94.3096 -93.658 -92.1976 -96.2174 -90.768 -99.7491 -96.4917 -86.4316
+-77.4233 -86.6985 -83.0111 -92.4243 -66.0637 -19.302 -6.19714 -22.3629
+-62.1494 -74.3927 -71.4871 -66.0501 -74.0056 -80.0059 -79.9034 -79.2849
+-46.6933 -27.881 -36.5703 -63.9942 -80.5718 -83.8976 -91.9604 -93.8888
+-89.4857 -89.5157 -82.5313 -76.6345 -70.8674 -68.1114 -61.0412 -59.8982
+-68.1512 -57.0459 -39.555 -40.1899 -64.1828 -84.1825 -73.399 -75.7311
+-80.4375 -75.1638 -70.5932 -72.56 -73.1243 -71.4415 -72.7329 -81.2532
+-69.0333 -52.3626 -27.2185 -23.3514 -42.6403 -51.1131 -42.9288 -8.81441
+-2.1555 -21.0742 -58.3237 -67.4477 -63.8304 -74.3425 -74.6437 -73.1235
+-69.322 -78.6697 -77.894 -63.9147 -58.4283 -59.1275 -66.4063 -65.6855
+-54.6072 -54.3151 -70.021 -63.1539 -52.722 -63.6239 -70.2333 -76.6479
+-75.6894 -65.9796 -65.5683 -72.5208 -83.2722 -76.3278 -69.3476 -70.5635
+-69.8644 -68.0588 -67.2266 -68.1147 -70.5143 -70.4589 -74.0657 -69.1613
+-64.951 -62.1937 -37.947 -14.2907 -10.5065 -27.9807 -47.1777 -28.5241
+-12.8212 0 -0.690397 -16.0326 -33.2224 -42.2502 -48.0122 -49.8246 -53.398
+-61.8074 -60.2697 -55.2335 -64.6825 -56.0951 -48.1213 -50.4188 -61.8813
+-76.8919 -75.4968 -65.2637 -65.9052 -68.5732 -64.6342 -69.7047 -71.7339
+-63.1278 -65.3263 -62.3351 -53.5747 -49.7789 -62.096 -71.2438 -61.0272
+-57.9965 -47.0881 -34.7644 -44.5787 -58.2263 -64.4788 -62.0352 -64.1871
+-73.6541 -78.9992 -67.6916 -43.3974 -19.155 -14.3089 -26.2902 -48.9908
+-66.8908 -58.5688 -58.3705 -72.1627 -68.435 -65.4608 -58.6881 -59.2904
+-67.1616 -70.2684 -61.8895 -55.6806 -58.4653 -58.5467 -39.9901 -14.0315
+-1.0915 -0.39958 -11.3401 -29.4807 -47.1148 -54.5282 -57.1597 -77.8444
+-81.4399 -71.5219 -67.5589 -67.5343 -83.1521 -83.1292 -73.3429 -75.9676
+-76.1888 -82.067 -74.026 -73.2935 -77.0703 -82.1429 -84.1927 -90.8446
+-81.8199 -82.545 -78.146 -82.1436 -89.8551 -90.0385 -99.1246 -95.5936
+-86.5506 -77.2194 -74.1823 -61.0047 -40.1216 -21.5579 -26.969 -47.1474
+-69.8623 -79.7391 -79.1228 -78.7674 -81.7823 -92.0384 -88.322 -83.925
+-82.3038 -76.8341 -71.5984 -77.2865 -88.254 -90.3722 -72.0566 -68.8945
+-80.9385 -81.6888 -82.5771 -79.1189 -83.7204 -75.1323 -73.0692 -73.7923
+-74.7047 -69.4535 -65.8703 -72.5863 -74.65 -64.2128 -49.5035 -27.4794
+-18.0758 -30.8398 -48.4413 -58.5997 -71.3766 -78.2387 -79.8064 -78.4762
+-85.3341 -83.8192 -94.0088 -95.5284 -72.9327 -58.7839 -66.563 -74.2692
+-62.8775 -65.7269 -79.0927 -100.784 -87.0673 -84.4847 -92.6454 -84.0578
+-61.1697 -51.1314 -55.8541 -64.3141 -76.6609 -94.0355 -85.5591 -89.5568
+-101.138 -113.464 -100.268 -101.339 -89.3764 -82.3985 -91.8131 -106.301
+-105.089 -105.256 -89.3648 -80.5919 -83.6549 -90.9112 -93.0763 -100.453
+-90.0037 -72.5153 -48.3376 -42.0405 -52.5757 -64.3701 -69.7221 -82.5852
+-96.9358 -95.6141 -94.9031 -94.6392 -86.1382 -82.2796 -89.125 -92.1328
+-88.3282 -95.1728 -93.355 -93.5513 -91.4937 -81.893 -84.1925 -80.1036
+-84.1973 -90.3741 -86.2587 -79.3868 -59.3696 -55.28 -49.9048 -29.2407
+-23.6024 -24.4677 -29.595 -38.6681 -42.8628 -49.9848 -58.5513 -74.8284
+-82.0655 -72.5605 -69.7212 -74.1609 -94.1968 -95.711 -87.8502 -87.3243
+-93.5845 -93.6562 -89.7456 -86.3288 -90.1139 -92.9167 -106.966 -111.24
+-120 -118.669 -105.576 -103.853 -105.075 -100.454 -94.1112 -95.1992
+-97.8693 -104.371 -104.597 -104.195 -103.93 -95.3995 -96.7728 -103.497
+-114.127 -118.909 -120 -118.034 -110.575 -118.778 -119.115 -110.044
+-96.7461 -89.0044 -103.743 -89.7951 -71.2894 -59.2259 -65.912 -86.3378
+-100.508 -109.373 -113.355 -106.089 -108.64 -120 -114.9 -117.847 -120
+-118.162 -115.319 -113.267 -90.2167 -86.9855 -79.545 -65.8126 -77.077
+-106.215 -106.543 -111.014 -113.945 -110.273 -109.597 -100.872 -88.7283
+-86.1375 -71.3059 -62.0016 -62.3555 -64.4186 -66.1867 -60.4197 -54.5975
+-64.0149 -92.5221 -98.3621 -111.573 -114.484 -114.092 -100.7 -84.1034
+-85.1918 -103.551 -120 -118.27 -109.887 -120 -120 -109.684 -108.608
+-120 -120 -120 -120 -120 -120 -114.214 -103.275 -107.613 -119.036 -120
+-120 -120 -120 -120 -120 -120 -120 -120 -120 -120 -120 -120 -120 -120
+-120 -120 -120 -120 -48;
+#X coords 0 96 512 -96 200 140 1;
+#X restore 245 44 graph;
+#X obj 598 303 dac~;
+#X obj 598 253 *~;
+#X msg 90 284 threshold \$1;
+#X floatatom 90 266 5 0 0 0 - - -;
+#X floatatom 205 266 5 0 0 0 - - -;
+#X floatatom 298 266 5 0 0 0 - - -;
+#X floatatom 400 266 5 -60 60 0 - - -;
+#X floatatom 347 387 5 0 60 0 - - -;
+#X msg 205 284 attack \$1;
+#X msg 298 284 release \$1;
+#X msg 400 284 gain \$1;
+#X floatatom 265 387 5 0 0 0 - - -;
+#X msg 265 405 tilt \$1;
+#X msg 23 258 reset;
+#X msg 175 405 learn \$1;
+#X obj 175 385 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 23 380 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
+1;
+#X msg 23 400 peaktrack \$1;
+#X msg 347 405 makeupgain \$1;
+#X obj 23 84 hradio 15 1 0 2 empty empty empty 0 -8 0 10 -262144 -1
+-1 1;
+#X msg 23 104 type \$1;
+#X obj 638 119 r sg;
+#X obj 598 159 +spectralgate~ sg-array;
+#X obj 598 65 bng 15 250 50 0 sg_openfile empty open-soundfile 17 7
+0 12 -4034 -1 -1;
+#N canvas 657 107 720 531 init 0;
+#X obj 37 18 loadbang;
+#X msg 146 446 \; pd dsp 1 \;;
+#X msg 164 391 80;
+#X msg 244 337 0;
+#X msg 370 187 0;
+#X msg 409 159 0;
+#X msg 329 213 -40;
+#X msg 283 309 0.1;
+#X msg 290 241 0.5;
+#X obj 164 412 s sg-volume-set;
+#X obj 370 208 s sg-gain-set;
+#X obj 329 234 s sg-thresh-set;
+#X obj 290 262 s sg-release-set;
+#X obj 283 330 s sg-attack-set;
+#X obj 244 358 s sg-tilt-set;
+#X obj 409 180 s sg-learn-set;
+#X msg 203 363 0;
+#X obj 203 384 s sc-makeupgain-set;
+#X msg 459 129 0;
+#X obj 459 150 s sg-type-set;
+#X obj 37 39 t b b b b b b b b b b b;
+#X msg 324 33 \; sg-array ylabel -40 -96 -40 0 40 96 \;;
+#X connect 0 0 20 0;
+#X connect 2 0 9 0;
+#X connect 3 0 14 0;
+#X connect 4 0 10 0;
+#X connect 5 0 15 0;
+#X connect 6 0 11 0;
+#X connect 7 0 13 0;
+#X connect 8 0 12 0;
+#X connect 16 0 17 0;
+#X connect 18 0 19 0;
+#X connect 20 0 1 0;
+#X connect 20 1 2 0;
+#X connect 20 2 16 0;
+#X connect 20 3 3 0;
+#X connect 20 4 7 0;
+#X connect 20 5 8 0;
+#X connect 20 6 6 0;
+#X connect 20 7 4 0;
+#X connect 20 9 18 0;
+#X connect 20 10 21 0;
+#X restore 710 -26 pd init;
+#X obj 25 -137 cnv 15 500 100 empty empty empty 20 12 0 14 -228856
+-66577 0;
+#X text 28 -164 +spectralgate~;
+#N canvas 353 74 961 363 spectralgate-details 0;
+#X text 32 19 threshold - This is the point at which the gate starts
+to operate. It can be varied from -96 dB to 0 dB. The level of the
+input sound at every frequency is compared against the threshold. If
+gating \, the gain is applied whenever the input sound is lower than
+the threshold. If ducking \, the gain is applied whenever the input
+sound is higher than the threshold. If the shaping line in the spectral
+display is used to give the threshold a complex shape \, the threshold
+knob represents the average threshold of the shaping line.;
+#X text 32 149 gain - This regulates the amount of gain applied when
+the +spectralgate is in gate mode and the sound is below the threshold
+\, or in duck mode and the sound is above the threshold. gain can be
+varied from -60 dB to 60 dB.;
+#X text 31 221 attack and release - These controls specify how quickly
+the gate will turn on (attack) or turn off (release) after passing
+the threshold. They both can be varied from 0 to 1 second. A longer
+value will smooth the transition from ungated to gated \, making the
+transition less noticeable. A shorter value will make the transition
+more abrupt.;
+#X text 492 19 tilt - This control gives you an easy way to change
+the threshold shape \, either by raising the high frequencies and lowering
+the low \, or vice-versa. Tilt can go from a 6 dB per octave boost
+of the high frequencies to a -6 dB per octave cut of the high frequencies.
+;
+#X text 492 99 makeupgain - This is a simple level adjustment that
+affects all frequencies \, whether gated or not. It is automatically
+adjusted as gain and threshold are adjusted to attempt to maintain
+a unity gain for the effect. The range is -60 dB to 60 dB.;
+#X text 492 179 learn - This button will take the spectral shape of
+the current input sound and set the threshold from it. This is useful
+if you are trying to gate a specific type of sound.;
+#X text 492 229 reset - This button resets the threshold shape to a
+straight line.;
+#X text 492 268 peaktrack - This causes the threshold shape to track
+the peak sound. This is useful if you want to maintain the same spectral
+density regardless of the sound level.;
+#X restore 598 -47 pd spectralgate-details;
+#N canvas 623 78 657 507 sg_soundfile 0;
+#N canvas 0 22 450 300 (subpatch) 0;
+#X array sg_soundfile 250904 float 2;
+#X coords 0 1 250904 -1 200 140 1;
+#X restore 34 31 graph;
+#X obj 281 33 openpanel;
+#X obj 281 96 soundfiler;
+#X obj 281 171 phasor~ 0.5;
+#X obj 281 198 *~;
+#X obj 451 413 /;
+#X obj 451 348 t b f;
+#X obj 451 371 samplerate~;
+#X obj 281 288 outlet~;
+#X obj 281 231 tabread~ sg_soundfile;
+#X obj 322 198 r sg_filelength;
+#X obj 451 320 r sg_filelength;
+#X obj 451 440 s sg_phasorfreq;
+#X obj 281 146 r sg_phasorfreq;
+#X obj 281 121 s sg_filelength;
+#X msg 281 64 read -resize -maxsize 2e+06 \$1 sg_soundfile;
+#X obj 281 11 r sg_openfile;
+#X connect 1 0 15 0;
+#X connect 2 0 14 0;
+#X connect 3 0 4 0;
+#X connect 4 0 9 0;
+#X connect 5 0 12 0;
+#X connect 6 0 7 0;
+#X connect 6 1 5 1;
+#X connect 7 0 5 0;
+#X connect 9 0 8 0;
+#X connect 10 0 4 1;
+#X connect 11 0 6 0;
+#X connect 13 0 3 0;
+#X connect 15 0 2 0;
+#X connect 16 0 1 0;
+#X restore 598 89 pd sg_soundfile;
+#X obj 616 222 dbtorms~;
+#X obj 619 201 hsl 128 15 0 100 0 0 empty sg-volume-set volume -2 -8
+0 12 -228856 -1 -1 12700 1;
+#X msg 43 132 set sg-array;
+#X text 30 -132 +spectralgate~ is a spectral version of the standard
+noise gate/ducker dynamics processor. It divides the frequency range
+into 513 bands \, and applies a separate noise gate on each band. This
+allows you to gate or duck some bands without affecting others \, thus
+affecting only specific frequencies. In addition \, you can draw a
+threshold shape \, setting a separate threshold for each frequency.
+;
+#X obj 23 421 s sg;
+#X obj 23 300 s sg;
+#X obj 23 185 s sg;
+#X connect 2 0 1 1;
+#X connect 2 0 1 0;
+#X connect 3 0 35 0;
+#X connect 4 0 3 0;
+#X connect 5 0 9 0;
+#X connect 6 0 10 0;
+#X connect 7 0 11 0;
+#X connect 8 0 19 0;
+#X connect 9 0 35 0;
+#X connect 10 0 35 0;
+#X connect 11 0 35 0;
+#X connect 12 0 13 0;
+#X connect 13 0 34 0;
+#X connect 14 0 35 0;
+#X connect 15 0 34 0;
+#X connect 16 0 15 0;
+#X connect 17 0 18 0;
+#X connect 18 0 34 0;
+#X connect 19 0 34 0;
+#X connect 20 0 21 0;
+#X connect 21 0 36 0;
+#X connect 22 0 23 0;
+#X connect 23 0 2 0;
+#X connect 29 0 23 0;
+#X connect 30 0 2 1;
+#X connect 31 0 30 0;
+#X connect 32 0 36 0;

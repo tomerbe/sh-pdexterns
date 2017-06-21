@@ -1,0 +1,278 @@
+#N canvas 192 89 973 559 12;
+#X floatatom 23 209 10 1 5000 0 - - -;
+#X floatatom 216 209 5 0 200 0 - - -;
+#X floatatom 216 314 5 0 100 0 - - -;
+#X msg 23 227 time \$1;
+#X msg 216 227 feedback \$1;
+#X obj 420 392 tgl 15 0 empty del_butfb empty 17 7 0 10 -262144 -1
+-1 1 1;
+#X obj 23 248 s delay;
+#X obj 216 248 s delay;
+#X obj 216 353 s delay;
+#X obj 388 344 tgl 15 0 empty del_freeze empty 17 7 0 10 -262144 -1
+-1 0 1;
+#X obj 388 461 s delay;
+#X obj 490 521 s delay;
+#X msg 388 363 freeze \$1;
+#X msg 490 476 1;
+#X msg 524 476 2;
+#X msg 216 332 resonance \$1;
+#X floatatom 22 314 10 20 20000 0 - - -;
+#X obj 22 353 s delay;
+#X floatatom 602 209 5 0 100 0 - - -;
+#X floatatom 414 209 5 0.01 10 0 - - -;
+#X obj 602 248 s delay;
+#X obj 414 248 s delay;
+#X msg 22 332 filterFreq \$1;
+#X msg 414 227 lfoFreq \$1;
+#X msg 602 227 lfoDepth \$1;
+#X msg 420 411 feedbackSwitch \$1;
+#X obj 26 193 hsl 128 15 1 5000 1 0 empty del_time empty -2 -8 0 10
+-228856 -1 -1 8481 1;
+#X obj 594 461 s delay;
+#X msg 594 441 lfoShape \$1;
+#X msg 490 501 heads \$1;
+#N canvas 212 73 989 634 control 0;
+#X text 14 33 time - the delay time \, variable from 1 millisecond
+to 5 seconds. This control is logarithmic so that there is more knob
+resolution on the lower time values.;
+#X text 13 87 feedback - the feedback varies between 0% to 200%. This
+controls the amount of delayed signal that is mixed with the input
+and reinserted into the delay line. Because there is a potential of
+300% gain at this mix point (100% input + 200% delay) \, the summed
+signals are put through a soft saturation processor and DC blocker.
+;
+#X text 12 267 lfo depth - the depth of modulation of delay time. This
+control varies from 0% to 100%. Delay time modulation is based on the
+current delay time \, so that if the delay time is 1 second \, and
+LFO depth is at 50% \, the delay time will vary from 0.5 seconds to
+1.5 seconds.;
+#X text 6 364 lfo shape - 6 wave shapes are available for delay time
+modulation: sine \, triangle \, square \, ramp up \, ramp down and
+random. The random setting picks a new random value at the start of
+each LFO cycle \, and then creates a ramp toward that value;
+#X text 502 212 lfo phase - when processing a stereo signal with LFO
+time modulation \, the left and right channels will receive 2 phase
+offset LFO signals of the same shape and frequency. A phase offset
+LFO gives a more spacious sound when used with chorus settings. This
+control varies from -180 degrees to +180 degrees.;
+#X text 6 447 resonance - this controls the resonance of the lowpass
+filter. This control goes from 0% to 100%. Above 50% \, the filter
+is highly resonant;
+#X text 501 120 feedback +/feedback - - this allows you to invert the
+feedback signal \, which will effect the harmonics being emphasized
+when the delay time is below 20 milliseconds \, and the delay is acting
+like a comb filter.ment;
+#X text 504 322 freeze - this control does two things \, it turns off
+the input \, and sets the feedback at 100% \, which allows the delay
+to playback the current contents of the delay indefinitely. Delay time
+modulation and feedback filtering are still present when freeze is
+turned on.;
+#X text 502 422 one head/two head - in one head mode \, the delay acts
+like a conventional delay. In two head mode \, an additional playback
+head (tap) is added to the delay which is 180 degrees out of phase
+from the original delay. The two heads/taps are continuously crossfaded.
+Two head mode is used when pitch-shifting by modulating the delay time
+with a ramp wave \, in order to hide the discontinuity in the ramp.
+;
+#X text 21 6 +delay~;
+#X text 13 191 lfo freq - the frequency of the low frequency oscillator
+which modulates the delay time. This control is logarithmic \, and
+varies from 0.01 Hertz (100 seconds per cycle) to 10 Hertz.;
+#X text 503 31 filter freq - this controls the frequency of a lowpass
+resonant filter in the feedback loop. This is a logarithmic control
+with a range from 20 Hertz to 20 kiloHertz. At 20 kiloHertz \, the
+filter is removed from the feedback loop.;
+#X text 5 513 Dry/Delay volume-controls the volume of the original
+signal (dry) or the delayed signal (delay);
+#X text 5 552 Mix-controls the ratio of dry-delay in the output. Ranges
+from 0 to 100% (0% all dry \, 100% all delay). Adjust mix \, then adjust
+volumes as desired.;
+#X restore 593 54 pd control details;
+#X obj 219 193 hsl 128 15 0 200 0 0 empty del_fb empty -2 -8 0 10 -228856
+-1 -1 0 1;
+#X obj 417 193 hsl 128 15 0.01 10 0 0 empty del_LFOfreq empty -2 -8
+0 10 -228856 -1 -1 1038 1;
+#X obj 605 193 hsl 128 15 0 100 0 0 empty del_LFOdp empty -2 -8 0 10
+-228856 -1 -1 6500 1;
+#X text 21 16 +delay~;
+#X obj 25 298 hsl 128 15 20 20000 0 0 empty del_filterFreq empty -2
+-8 0 10 -228856 -1 -1 12700 1;
+#X obj 219 298 hsl 128 15 0 100 0 0 empty del_res empty -2 -8 0 10
+-228856 -1 -1 10795 1;
+#X text 617 345 0: sine \; 1: triangle \; 2: square \; 3: ramp up \;
+4: ramp down \; 5: random \;;
+#X text 19 281 20 - 20kHz;
+#X text 20 174 1 - 50000ms;
+#X text 214 177 0 - 200%;
+#X text 412 176 0.01 - 10Hz;
+#X text 599 175 0 - 100%;
+#X text 214 281 0 - 100%;
+#X obj 24 512 hsl 128 15 0 100 0 0 empty del_delvol empty -2 -8 0 10
+-228856 -1 -1 10795 1;
+#X obj 25 437 hsl 128 15 0 100 0 0 empty del_dryvol empty -2 -8 0 10
+-228856 -1 -1 10795 1;
+#X text 22 415 Dry Volume (dB);
+#X text 22 489 Delay Volume (dB);
+#X floatatom 21 529 5 0 0 0 - - del_delvolume;
+#X floatatom 22 454 5 0 100 0 - - del_dryvolume;
+#X obj 594 345 vradio 15 1 0 6 empty del_LFOshape empty 0 -8 0 10 -262144
+-1 -1 0;
+#X obj 803 208 bng 15 250 50 0 del_openfile empty open-sound-file 17
+7 0 12 -4034 -1 -1;
+#N canvas 86 28 598 579 init 0;
+#X msg 45 352 30.2;
+#X msg 147 282 0;
+#X msg 162 218 0.04;
+#X msg 271 152 90;
+#X msg 217 187 1;
+#X obj 45 373 s del_time;
+#X obj 149 528 s del_LFOdp;
+#X obj 155 500 s del_LFOshape;
+#X obj 165 476 s del_freeze;
+#X obj 175 451 s del_LFOlk;
+#X obj 162 240 s del_LFOfreq;
+#X obj 271 175 s del_LFOphase;
+#X obj 327 140 s del_filterFreq;
+#X obj 483 121 s del_res;
+#X obj 217 209 s del_butfb;
+#X obj 185 422 s del_fb;
+#X obj 483 154 s del_dryvol;
+#X obj 483 174 s del_delvol;
+#X msg 483 96 85;
+#X msg 327 117 20000;
+#X msg 25 406 \; pd dsp 1 \;;
+#X obj 25 17 loadbang;
+#X obj 25 40 t b b b b b b b b;
+#X connect 0 0 5 0;
+#X connect 1 0 6 0;
+#X connect 1 0 7 0;
+#X connect 1 0 8 0;
+#X connect 1 0 9 0;
+#X connect 1 0 15 0;
+#X connect 2 0 10 0;
+#X connect 3 0 11 0;
+#X connect 4 0 14 0;
+#X connect 18 0 13 0;
+#X connect 18 0 16 0;
+#X connect 18 0 17 0;
+#X connect 19 0 12 0;
+#X connect 21 0 22 0;
+#X connect 22 0 20 0;
+#X connect 22 1 0 0;
+#X connect 22 2 1 0;
+#X connect 22 3 2 0;
+#X connect 22 4 4 0;
+#X connect 22 5 3 0;
+#X connect 22 6 19 0;
+#X connect 22 7 18 0;
+#X restore 681 77 pd init;
+#X obj 23 40 cnv 15 500 75 empty empty empty 20 12 0 14 -233017 -66577
+0;
+#X text 28 40 The +delay~ object is a delay patch with a list of common
+parameters including delay time \, feedback \, and delay modulation.
+The green controls are logarithmic and the blue controls are linear.
+(click on control details for detailed information on the parameters)
+;
+#N canvas 281 51 796 498 sf-player 0;
+#N canvas 0 22 450 300 (subpatch) 0;
+#X array del_soundfile 2e+06 float 2;
+#X coords 0 1 2e+06 -1 200 140 1;
+#X restore 12 19 graph;
+#X obj 262 53 openpanel;
+#X obj 262 116 soundfiler;
+#X obj 263 191 phasor~ 0.5;
+#X obj 263 218 *~;
+#X obj 564 256 /;
+#X obj 564 207 t b f;
+#X obj 564 231 samplerate~;
+#X obj 564 183 r del_filelength;
+#X obj 564 281 s del_phasorfreq;
+#X obj 305 218 r del_filelength;
+#X obj 263 166 r del_phasorfreq;
+#X obj 262 141 s del_filelength;
+#X msg 262 84 read -resize -maxsize 2e+06 \$1 del_soundfile;
+#X obj 262 30 r del_openfile;
+#X obj 263 242 tabread4~ del_soundfile;
+#X obj 263 460 dac~;
+#X obj 284 346 dbtorms;
+#X obj 284 324 r del_dryvolume;
+#X text 347 49 Note:files over a minute in length will be truncated.
+\; Change as needed.;
+#X obj 263 417 *~;
+#X obj 284 392 line~;
+#X obj 284 287 outlet~;
+#X msg 284 369 \$1 50;
+#X connect 1 0 13 0;
+#X connect 2 0 12 0;
+#X connect 3 0 4 0;
+#X connect 4 0 15 0;
+#X connect 5 0 9 0;
+#X connect 6 0 7 0;
+#X connect 6 1 5 1;
+#X connect 7 0 5 0;
+#X connect 8 0 6 0;
+#X connect 10 0 4 1;
+#X connect 11 0 3 0;
+#X connect 13 0 2 0;
+#X connect 14 0 1 0;
+#X connect 15 0 20 0;
+#X connect 15 0 22 0;
+#X connect 17 0 23 0;
+#X connect 18 0 17 0;
+#X connect 20 0 16 0;
+#X connect 20 0 16 1;
+#X connect 21 0 20 1;
+#X connect 23 0 21 0;
+#X restore 803 233 pd sf-player;
+#X obj 803 332 +delay~;
+#X obj 831 286 r delay;
+#N canvas 661 303 207 271 output 0;
+#X obj 36 211 dac~;
+#X obj 57 101 dbtorms;
+#X obj 57 80 r del_delvolume;
+#X obj 36 168 *~;
+#X obj 57 145 line~;
+#X obj 36 35 inlet~;
+#X msg 57 122 \$1 50;
+#X connect 1 0 6 0;
+#X connect 2 0 1 0;
+#X connect 3 0 0 0;
+#X connect 3 0 0 1;
+#X connect 4 0 3 1;
+#X connect 5 0 3 0;
+#X connect 6 0 4 0;
+#X restore 803 382 pd output;
+#X connect 0 0 3 0;
+#X connect 1 0 4 0;
+#X connect 2 0 15 0;
+#X connect 3 0 6 0;
+#X connect 4 0 7 0;
+#X connect 5 0 25 0;
+#X connect 9 0 12 0;
+#X connect 12 0 10 0;
+#X connect 13 0 29 0;
+#X connect 14 0 29 0;
+#X connect 15 0 8 0;
+#X connect 16 0 22 0;
+#X connect 18 0 24 0;
+#X connect 19 0 23 0;
+#X connect 22 0 17 0;
+#X connect 23 0 21 0;
+#X connect 24 0 20 0;
+#X connect 25 0 10 0;
+#X connect 26 0 0 0;
+#X connect 28 0 27 0;
+#X connect 29 0 11 0;
+#X connect 31 0 1 0;
+#X connect 32 0 19 0;
+#X connect 33 0 18 0;
+#X connect 35 0 16 0;
+#X connect 36 0 2 0;
+#X connect 44 0 48 0;
+#X connect 45 0 49 0;
+#X connect 50 0 28 0;
+#X connect 55 0 56 0;
+#X connect 56 0 58 0;
+#X connect 57 0 56 0;
+#X coords 0 0 1 1 85 60 0;
