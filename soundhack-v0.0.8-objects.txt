@@ -1,0 +1,11 @@
++binaural~ binaural filter
++bubbler~ granular delay
++chebyshev~ chebyshev waveshaper
++compand~ compressor/expander
++decimate~ bit depth and sample rate reduction
++delay~ classic delay effects
++matrix~ mid-side to left-right encoder and decoder
++morphfilter~ morph between filters
++pitchdelay~ delay based pitch shifter
++spectralcompand~ spectral expander/compressor
++spectralgate~ spectral noise gate/ducker

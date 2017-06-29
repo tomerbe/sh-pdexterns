@@ -3,7 +3,7 @@ SOURCES = +binaural~.c +bubbler~.c +chebyshev~.c +compand~.c +decimate~.c +delay
 LIBRARY_NAME := $(shell basename `pwd`)
 
 # ****SUPPLY THE LOCATION OF PD SOURCE****
-pd_src = /Applications/Pd-0.47-1.app/Contents/Resources/
+pd_src = /Applications/Pd-0.47-1-64bit.app/Contents/Resources/
 
 objectsdir = $(pd_src)/extra
 
